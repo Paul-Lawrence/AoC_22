@@ -1,7 +1,3 @@
-
-
-
-
 def part_1(strats, dict):
 	score = 0
 	for strat in strats:
