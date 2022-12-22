@@ -68,18 +68,17 @@ def part_2(nums):
 	return tot
 	
 def ch(nums):
-	x=[n*81589153 for n in nums]
-	j = list(range(len(x)))
-	
-	for _ in range(10):
-		for i in range(len(x)):
-			c=j.index(i)
-			j.pop(c)
-			j.insert((c+x[i])%len(j),i)
-		#print(x)
-		#print(j)
-	z=j.index(x.index(0))
-	print(sum(x[j[(z+i)%len(j)]]for i in [1000,2000,3000]))
+	numbers = [x * 811589153 for x in nums]
+	indices = list(range(len(numbers)))
+
+	for i in indices * 10:
+	    indices.pop(j := indices.index(i))
+	    indices.insert((j+numbers[i]) % len(indices), i)
+	   # print(numbers)
+	   # print(indices)
+
+	zero = indices.index(numbers.index(0))
+	print(sum(numbers[indices[(zero+p) % len(numbers)]] for p in [1000,2000,3000]))
 	
 	
 	#while(i<len(nums)):
@@ -97,15 +96,13 @@ def ch(nums):
 def main():
 	#nums=[coord(int(line.strip())) for line in open('day_20.txt', 'r').readlines()]
 	nums=[int(line.strip()) for line in open('day_20.txt', 'r').readlines()]
-	for i in range(len(nums)):
-		nums[i]=coord(nums[i],i)
 	#print([n.value for n in nums])
 	test=[1,2,-3,3,-2,0,4]
 	#for i in range(len(test)):
 	#	test[i]=coord(test[i],i)
 	#print(part_2(test))
 	cheat=[int(x.strip()) for x in open('day_20.txt','r').readlines()]
-	ch(test)
+	ch(nums)
 	
 	
 main()
